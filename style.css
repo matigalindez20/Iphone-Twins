@@ -51,7 +51,7 @@ body {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding-bottom: 15px; /* Espacio para que el borde inferior no se pegue */
     position: relative;
     transition: color 0.3s ease;
@@ -60,23 +60,6 @@ body {
 .nav-links a:hover {
     color: #fdd100; /* Color amarillo al pasar el ratón */
 }
-
-/* Estilo para el enlace ACTIVO ("Inicio") */
-.nav-links a.active {
-    color: #fdd100; /* Texto en color amarillo */
-}
-
-/* El subrayado amarillo solo para el enlace activo */
-.nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; /* Se alinea con el borde inferior del header */
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #fdd100;
-}
-
 
 /* --- ÍCONOS DE LA DERECHA (BÚSQUEDA Y CARRITO) --- */
 .nav-icons {
@@ -197,3 +180,134 @@ body {
         gap: 20px;
     }
 }
+
+/* --- ESTILOS PARA SECCIÓN DE IMÁGENES DESTACADAS --- */
+/* Pega este código al final de tu archivo styles.css */
+
+.featured-section {
+    display: flex; /* Usamos Flexbox para alinear los elementos */
+    justify-content: center; /* Centramos las tarjetas horizontalmente */
+    align-items: stretch; /* Hacemos que ambas tarjetas tengan la misma altura */
+    gap: 30px; /* Espacio entre las dos imágenes */
+    padding: 50px 20px; /* Espacio arriba/abajo y a los lados de la sección */
+    max-width: 1200px; /* Ancho máximo para que no se estire demasiado en pantallas gigantes */
+    margin: 0 auto; /* Centra la sección en la página */
+}
+
+.featured-card {
+    display: block; /* Necesario para que el enlace se comporte como un bloque */
+    border-radius: 20px; /* Coincide con el redondeo de tus imágenes */
+    overflow: hidden; /* Oculta cualquier cosa que se salga del borde redondeado */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Sombra sutil para dar profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+    flex: 1; /* Permite que cada tarjeta crezca y ocupe el espacio disponible */
+    max-width: 500px; /* Limita el tamaño máximo de cada tarjeta */
+}
+
+.featured-card img {
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor */
+    height: auto;
+    display: block; /* Elimina un pequeño espacio blanco que a veces aparece debajo de las imágenes */
+}
+
+/* Efecto al pasar el ratón por encima */
+.featured-card:hover {
+    transform: scale(1.03); /* Ligeramente más grande */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+}
+
+
+/* --- ESTILOS RESPONSIVE PARA LA SECCIÓN DESTACADA --- */
+/* Usamos el mismo breakpoint que en el header para consistencia */
+@media (max-width: 768px) {
+    .featured-section {
+        flex-direction: column; /* Apila las imágenes una sobre otra */
+        align-items: center; /* Centra las tarjetas que ahora están en columna */
+        gap: 25px; /* Espacio entre las imágenes apiladas */
+        padding: 40px 15px; /* Menos padding en pantallas pequeñas */
+    }
+}
+
+/* --- ESTILOS GENERALES Y HEADER (los mismos de antes) --- */
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #0d0d0d; }
+.main-header { width: 100%; border-bottom: 3px solid #fdd100; }
+.header-top { background: radial-gradient(circle, #1a1a1a 0%, #080808 60%); padding: 20px 0; display: flex; justify-content: center; align-items: center; }
+.logo-container img { max-width: 120px; height: auto; }
+.main-nav { display: flex; justify-content: space-between; align-items: center; background-color: #000000; padding: 10px 5%; border-top: 1px dashed #4d4d4d; }
+.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 35px; }
+.nav-links a { text-decoration: none; color: white; font-weight: bold; font-size: 1.1rem; padding-bottom: 15px; position: relative; transition: color 0.3s ease; }
+.nav-links a:hover { color: #fdd100; }
+.nav-links a.active { color: #fdd100; }
+.nav-links a.active::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 100%; height: 3px; background-color: #fdd100; }
+.nav-icons { display: flex; align-items: center; gap: 30px; }
+.search-icon i { font-size: 1.4rem; color: #a391f6; transition: color 0.3s ease; }
+.cart-container { position: relative; }
+.cart-icon i { font-size: 1.5rem; color: white; transition: color 0.3s ease; }
+.cart-count { position: absolute; top: -8px; right: -12px; background-color: #fdd100; color: black; border-radius: 50%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; }
+.hamburger-menu { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+/* --- SECCIÓN DE TIENDA DE IPHONES --- */
+.iphones-section { padding: 60px 20px; background-color: #080808; }
+.iphones-container { display: flex; max-width: 1400px; margin: 0 auto; gap: 40px; }
+.iphones-nav { flex: 0 0 280px; color: white; }
+.iphones-nav h2 { font-size: 2rem; margin-bottom: 30px; border-left: 4px solid #fdd100; padding-left: 15px; }
+.accordion-item { margin-bottom: 10px; border-bottom: 1px solid #222; }
+.accordion-header { background-color: #1a1a1a; padding: 15px 20px; cursor: pointer; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
+.accordion-header:hover { background-color: #252525; }
+.accordion-header::after { content: '+'; font-size: 1.5rem; color: #fdd100; transition: transform 0.3s ease; }
+.accordion-item.active .accordion-header::after { transform: rotate(45deg); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background-color: #0c0c0c; }
+.accordion-item.active .accordion-content { max-height: 200px; }
+.sub-model-link { display: block; padding: 12px 20px 12px 30px; color: #ccc; text-decoration: none; transition: background-color 0.3s, color 0.3s; }
+.sub-model-link:hover { background-color: #222; color: white; }
+.sub-model-link.active { background-color: #fdd100; color: #000; font-weight: bold; }
+.iphones-display { flex: 1; }
+.product-grid { display: none; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.product-grid.active { display: grid; }
+
+/* --- ESTILOS DE TARJETA DE PRODUCTO (MODIFICADO) --- */
+.product-card { background-color: #111; border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #222; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+.product-card img { max-width: 100%; /* La imagen puede ser más ancha */ height: 240px; /* AUMENTAMOS LA ALTURA DE LA IMAGEN */ object-fit: contain; margin-bottom: 20px; /* Más espacio debajo */ }
+.product-card h3 { color: white; font-size: 1.2rem; margin: 10px 0; }
+.product-card .price { color: #fdd100; font-size: 1.3rem; font-weight: bold; margin: 10px 0 20px; }
+.buy-button { background-color: #fdd100; color: #000; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; font-size: 1rem; }
+.buy-button:hover { background-color: #ffde4d; }
+
+/* --- ESTILOS DEL MODAL (NUEVO) --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { background: #1a1a1a; color: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 800px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
+.modal-overlay.active .modal-content { transform: scale(1); }
+.modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; line-height: 1; }
+.modal-body { display: flex; gap: 30px; }
+.modal-image { flex: 1; text-align: center; }
+.modal-image img { max-width: 100%; height: auto; max-height: 400px; object-fit: contain; }
+.modal-details { flex: 1; }
+.modal-details #modal-title { font-size: 2rem; margin-top: 0; }
+.modal-details .modal-price { color: #fdd100; font-size: 1.8rem; font-weight: bold; margin: 10px 0 25px; }
+.product-specs h3 { border-bottom: 2px solid #fdd100; padding-bottom: 5px; margin-bottom: 15px; }
+.product-specs p { line-height: 1.8; color: #ccc; }
+.modal-buy-button { margin-top: 30px; width: 100%; padding: 15px; font-size: 1.2rem; }
+
+/* --- RESPONSIVE GENERAL --- */
+@media (max-width: 992px) {
+    .iphones-container { flex-direction: column; }
+    .iphones-nav { flex: 0 0 auto; width: 100%; }
+}
+@media (max-width: 768px) {
+    .main-nav { padding: 10px 20px; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #000; padding: 0; z-index: 1000; }
+    .nav-links.active { display: flex; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a { padding: 15px 0; display: block; border-bottom: 1px solid #222; }
+    .nav-links a.active::after { display: none; }
+    .hamburger-menu { display: block; order: -1; }
+    .nav-icons { gap: 20px; }
+    /* Modal responsive */
+    .modal-body { flex-direction: column; }
+    .modal-content { padding: 20px; }
+    .modal-details #modal-title { font-size: 1.5rem; }
+    .modal-details .modal-price { font-size: 1.5rem; }
+}
+
