@@ -1,0 +1,199 @@
+/* --- ESTILOS GENERALES --- */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #0d0d0d; /* Un fondo oscuro para que resalte el header */
+}
+
+/* --- CONTENEDOR PRINCIPAL DEL HEADER --- */
+.main-header {
+    width: 100%;
+    /* La línea amarilla inferior que abarca todo el header */
+    border-bottom: 3px solid #fdd100;
+}
+
+/* --- PARTE SUPERIOR DEL HEADER (LOGO) --- */
+.header-top {
+    /* El fondo oscuro con el resplandor sutil en el centro */
+    background: radial-gradient(circle, #1a1a1a 0%, #080808 60%);
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container img {
+    max-width: 120px; /* Ajusta el tamaño del logo si es necesario */
+    height: auto;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.main-nav {
+    display: flex;
+    justify-content: center; /* Separa los links de los íconos */
+    align-items: center;
+    background-color: #000000;
+    padding: 10px 5%; /* Espaciado a los lados */
+    /* La línea punteada que separa el logo de la navegación */
+    border-top: 1px dashed #4d4d4d;
+}
+
+/* --- ENLACES DE NAVEGACIÓN --- */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 35px; /* Espacio entre cada palabra del menú */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-bottom: 15px; /* Espacio para que el borde inferior no se pegue */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fdd100; /* Color amarillo al pasar el ratón */
+}
+
+/* Estilo para el enlace ACTIVO ("Inicio") */
+.nav-links a.active {
+    color: #fdd100; /* Texto en color amarillo */
+}
+
+/* El subrayado amarillo solo para el enlace activo */
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Se alinea con el borde inferior del header */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fdd100;
+}
+
+
+/* --- ÍCONOS DE LA DERECHA (BÚSQUEDA Y CARRITO) --- */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espacio entre los íconos */
+}
+
+/* Estilo del ícono de búsqueda */
+.search-icon i {
+    font-size: 1.4rem;
+    color: #a391f6; /* Color azul-púrpura del ícono */
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover i {
+    color: #c8bff9;
+}
+
+/* Contenedor del carrito para posicionar la notificación */
+.cart-container {
+    position: relative;
+}
+
+.cart-icon i {
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.cart-icon:hover i {
+    color: #fdd100;
+}
+
+/* Notificación del carrito */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: #fdd100; /* Fondo amarillo */
+    color: black; /* Texto en negro */
+    border-radius: 50%; /* Para que sea un círculo */
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* --- ESTILOS RESPONSIVE (TABLET Y MÓVIL) --- */
+/* Añade este código al final de tu archivo styles.css */
+
+/* --- BOTÓN DE HAMBURGUESA --- */
+.hamburger-menu {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* El `breakpoint` de 768px es un punto común para pasar a la vista móvil. */
+/* Cuando la pantalla sea de 768px de ancho o menos, se aplican estos estilos. */
+@media (max-width: 768px) {
+
+    /* Hacemos que la barra de navegación sea más flexible para el nuevo orden */
+    .main-nav {
+        justify-content: space-between;
+        padding: 10px 20px; /* Un poco más de padding en móvil */
+    }
+
+    /* Ocultamos los enlaces de navegación del escritorio */
+    .nav-links {
+        display: none; /* Ocultos hasta que se activen */
+        flex-direction: column; /* Apilamos los enlaces verticalmente */
+        position: absolute; /* Lo sacamos del flujo normal para superponerlo */
+        top: 100%; /* Lo posicionamos justo debajo de la barra de navegación */
+        left: 0;
+        width: 100%;
+        background-color: #000; /* Fondo negro para el menú desplegado */
+        padding: 0;
+        z-index: 1000; /* Aseguramos que esté por encima de otro contenido */
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    }
+    
+    /* Cuando el menú tenga la clase 'active', lo mostramos */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 15px 0; /* Más espacio vertical para cada enlace */
+        display: block; /* Hacemos que el enlace ocupe todo el ancho del 'li' */
+        border-bottom: 1px solid #222; /* Línea separadora sutil */
+    }
+    
+    /* Quitamos el subrayado amarillo en la versión móvil para un look más limpio */
+    .nav-links a.active::after {
+        display: none; 
+    }
+
+    /* Mostramos el botón de hamburguesa que estaba oculto */
+    .hamburger-menu {
+        display: block;
+        order: -1; /* Lo movemos al principio, a la izquierda */
+    }
+
+    /* Ajustamos el espacio de los íconos de la derecha */
+    .nav-icons {
+        gap: 20px;
+    }
+}
