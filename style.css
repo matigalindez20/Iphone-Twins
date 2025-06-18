@@ -418,3 +418,62 @@ body {
 .logo-animado {
   animation: pulsar 3s ease-in-out infinite;
 }
+
+
+@media (max-width: 992px) {
+    
+    /* 1. Hacemos que el layout principal se apile verticalmente */
+    .iphones-container {
+        flex-direction: column; /* ¡LA MAGIA! Pone el menú arriba y los productos abajo */
+    }
+
+    .iphones-nav {
+        flex: 1 1 100%; /* El menú ahora ocupa todo el ancho */
+        margin-bottom: 30px; /* Espacio entre el menú y los productos */
+    }
+
+    /* 2. Ajustamos la cuadrícula de productos a 2 columnas */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Para móviles (menos de 576px) */
+@media (max-width: 576px) {
+    .iphones-section {
+        padding: 20px 15px; /* Menos espacio en pantallas pequeñas */
+    }
+    
+    /* 3. Forzamos la cuadrícula de productos a 1 sola columna */
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================================= */
+/* AJUSTES RESPONSIVE PARA EL MODAL (VENTANA EMERGENTE)    */
+/* ======================================================= */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* Hacemos que la imagen y los detalles se apilen en el modal */
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-image-container, .modal-details {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .modal-image-container {
+        margin-bottom: 20px;
+    }
+    
+    .modal-details h2 {
+        font-size: 1.5rem;
+    }
+}
