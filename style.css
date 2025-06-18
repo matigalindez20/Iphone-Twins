@@ -5,47 +5,49 @@ body {
     background-color: #0d0d0d; /* Un fondo oscuro para que resalte el header */
 }
 
-/* --- CONTENEDOR PRINCIPAL DEL HEADER --- */
+/* --- ESTILOS DE ESCRITORIO (PRESERVAN EL DISEÑO ORIGINAL) --- */
+
 .main-header {
     width: 100%;
+    /* El fondo oscuro con resplandor se aplica a todo el header */
+    background: radial-gradient(circle, #1a1a1a 0%, #080808 60%);
     /* La línea amarilla inferior que abarca todo el header */
     border-bottom: 3px solid #fdd100;
-    
+    padding-top: 20px; /* Espaciado superior que antes estaba en .header-top */
 }
 
-/* --- PARTE SUPERIOR DEL HEADER (LOGO) --- */
-.header-top {
-    /* El fondo oscuro con el resplandor sutil en el centro */
-    background: radial-gradient(circle, #1a1a1a 0%, #080808 60%);
-    padding: 20px 0;
+.main-nav {
+    display: flex;
+    justify-content: center; /* Centra los elementos */
+    align-items: center;
+    flex-wrap: wrap; /* PERMITE QUE EL LOGO Y LOS LINKS ESTÉN EN LÍNEAS SEPARADAS */
+    padding: 10px 5%;
+    /* La línea punteada que separa el logo de la navegación */
+    border-top: 1px dashed #4d4d4d;
+    margin-top: 20px; /* Espacio para que el logo "respire" arriba */
+}
+
+.logo-container {
+    width: 100%; /* HACE QUE EL LOGO OCUPE SU PROPIA LÍNEA */
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 20px; /* Espacio entre el logo y los links de navegación */
+    /* Lo movemos arriba, fuera del nav visualmente */
+    transform: translateY(-20px);
 }
 
 .logo-container img {
-    max-width: 120px; /* Ajusta el tamaño del logo si es necesario */
+    max-width: 120px;
     height: auto;
 }
 
-/* --- BARRA DE NAVEGACIÓN --- */
-.main-nav {
-    display: flex;
-    justify-content: center; /* Separa los links de los íconos */
-    align-items: center;
-    background-color: #000000;
-    padding: 10px 5%; /* Espaciado a los lados */
-    /* La línea punteada que separa el logo de la navegación */
-    border-top: 1px dashed #4d4d4d;
-}
-
-/* --- ENLACES DE NAVEGACIÓN --- */
+/* --- ENLACES DE NAVEGACIÓN (DESKTOP) --- */
 .nav-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 35px; /* Espacio entre cada palabra del menú */
+    gap: 35px;
 }
 
 .nav-links a {
@@ -53,132 +55,120 @@ body {
     color: white;
     font-weight: bold;
     font-size: 1.3rem;
-    padding-bottom: 15px; /* Espacio para que el borde inferior no se pegue */
+    padding-bottom: 15px;
     position: relative;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #fdd100; /* Color amarillo al pasar el ratón */
-}
-
-/* --- ÍCONOS DE LA DERECHA (BÚSQUEDA Y CARRITO) --- */
-.nav-icons {
-    display: flex;
-    align-items: center;
-    gap: 30px; /* Espacio entre los íconos */
-}
-
-/* Estilo del ícono de búsqueda */
-.search-icon i {
-    font-size: 1.4rem;
-    color: #a391f6; /* Color azul-púrpura del ícono */
-    transition: color 0.3s ease;
-}
-
-.search-icon:hover i {
-    color: #c8bff9;
-}
-
-/* Contenedor del carrito para posicionar la notificación */
-.cart-container {
-    position: relative;
-}
-
-.cart-icon i {
-    font-size: 1.5rem;
-    color: white;
-    transition: color 0.3s ease;
-}
-
-.cart-icon:hover i {
     color: #fdd100;
 }
 
-/* Notificación del carrito */
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -12px;
-    background-color: #fdd100; /* Fondo amarillo */
-    color: black; /* Texto en negro */
-    border-radius: 50%; /* Para que sea un círculo */
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    font-weight: bold;
+/* --- BOTÓN DE HAMBURGUESA (OCULTO EN DESKTOP) --- */
+.hamburger-btn {
+    display: none; /* Totalmente oculto en la vista de escritorio */
 }
 
-/* --- ESTILOS RESPONSIVE (TABLET Y MÓVIL) --- */
-/* Añade este código al final de tu archivo styles.css */
 
-/* --- BOTÓN DE HAMBURGUESA --- */
-.hamburger-menu {
-    display: none; /* Oculto por defecto en escritorio */
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* El `breakpoint` de 768px es un punto común para pasar a la vista móvil. */
-/* Cuando la pantalla sea de 768px de ancho o menos, se aplican estos estilos. */
+/* ------------------------------------------- */
+/* --- ESTILOS PARA MÓVIL (TABLETS Y ABAJO) --- */
+/* ------------------------------------------- */
 @media (max-width: 768px) {
 
-    /* Hacemos que la barra de navegación sea más flexible para el nuevo orden */
-    .main-nav {
-        justify-content: space-between;
-        padding: 10px 20px; /* Un poco más de padding en móvil */
-    }
-
-    /* Ocultamos los enlaces de navegación del escritorio */
-    .nav-links {
-        display: none; /* Ocultos hasta que se activen */
-        flex-direction: column; /* Apilamos los enlaces verticalmente */
-        position: absolute; /* Lo sacamos del flujo normal para superponerlo */
-        top: 100%; /* Lo posicionamos justo debajo de la barra de navegación */
-        left: 0;
-        width: 100%;
-        background-color: #000; /* Fondo negro para el menú desplegado */
-        padding: 0;
-        z-index: 1000; /* Aseguramos que esté por encima de otro contenido */
-        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    /* --- AJUSTES GENERALES DEL HEADER EN MÓVIL --- */
+    .main-header {
+        padding: 0; 
+        background: #000;
+        position: relative; /* Contenedor de referencia para los elementos absolutos */
     }
     
-    /* Cuando el menú tenga la clase 'active', lo mostramos */
+    .main-nav {
+        /* Este contenedor ahora solo define la altura del header */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        border-top: none; 
+        margin-top: 0;
+        /* Le damos una altura fija para que los elementos se puedan centrar dentro */
+        min-height: 80px; 
+    }
+
+    /* --- AJUSTES DEL LOGO EN MÓVIL (LA CORRECCIÓN PRINCIPAL) --- */
+    .logo-container {
+        width: auto;
+        margin: 0;
+        
+        /* ¡AQUÍ ESTÁ LA MAGIA! POSICIONAMIENTO ABSOLUTO */
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* El truco para un centrado perfecto */
+    }
+    .logo-container img {
+        max-width: 100px;
+        display: block; /* Buena práctica para imágenes dentro de contenedores posicionados */
+    }
+
+    /* --- POSICIONAMIENTO DEL BOTÓN DE HAMBURGUESA --- */
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        
+        /* Usa el mismo sistema de posicionamiento absoluto */
+        position: absolute;
+        right: 5%; /* Lo pegamos a la derecha */
+        top: 50%;
+        transform: translateY(-50%); /* Lo centramos verticalmente */
+    }
+    
+    .hamburger-btn span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #fdd100; 
+        border-radius: 3px;
+    }
+    
+    /* --- MENÚ DESPLEGABLE (sin cambios) --- */
+    .nav-links {
+        display: none; 
+        flex-direction: column; 
+        gap: 0;
+        position: absolute;
+        top: 100%; /* Se posicionará debajo del .main-header */
+        left: 0;
+        width: 100%;
+        background-color: #111;
+        border-top: 1px solid #4d4d4d;
+        z-index: 1000;
+    }
+    
     .nav-links.active {
         display: flex;
     }
 
     .nav-links li {
-        width: 100%;
         text-align: center;
+        width: 100%;
     }
 
     .nav-links a {
-        padding: 15px 0; /* Más espacio vertical para cada enlace */
-        display: block; /* Hacemos que el enlace ocupe todo el ancho del 'li' */
-        border-bottom: 1px solid #222; /* Línea separadora sutil */
-    }
-    
-    /* Quitamos el subrayado amarillo en la versión móvil para un look más limpio */
-    .nav-links a.active::after {
-        display: none; 
+        padding: 18px 0;
+        width: 100%;
+        display: block; 
+        border-bottom: 1px solid #222;
     }
 
-    /* Mostramos el botón de hamburguesa que estaba oculto */
-    .hamburger-menu {
-        display: block;
-        order: -1; /* Lo movemos al principio, a la izquierda */
-    }
-
-    /* Ajustamos el espacio de los íconos de la derecha */
-    .nav-icons {
-        gap: 20px;
+    .nav-links li:last-child a {
+        border-bottom: none;
     }
 }
 
@@ -229,86 +219,202 @@ body {
     }
 }
 
-/* --- ESTILOS GENERALES Y HEADER (los mismos de antes) --- */
-body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #0d0d0d; }
-.main-header { width: 100%; border-bottom: 3px solid #fdd100; }
-.header-top { background: radial-gradient(circle, #1a1a1a 0%, #080808 60%); padding: 20px 0; display: flex; justify-content: center; align-items: center; }
-.logo-container img { max-width: 120px; height: auto; }
-.main-nav { display: flex; justify-content: center; align-items: center; background-color: #000000; padding: 10px 5%; border-top: 1px dashed #4d4d4d; }
-.nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 35px; }
-.nav-links a { text-decoration: none; color: white; font-weight: bold; font-size: 1.1rem; padding-bottom: 15px; position: relative; transition: color 0.3s ease; }
-.nav-links a:hover { color: #fdd100; }
-.nav-links a.active { color: #fdd100; }
-.nav-links a.active::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 100%; height: 3px; background-color: #fdd100; }
-.nav-icons { display: flex; align-items: center; gap: 30px; }
-.search-icon i { font-size: 1.4rem; color: #a391f6; transition: color 0.3s ease; }
-.cart-container { position: relative; }
-.cart-icon i { font-size: 1.5rem; color: white; transition: color 0.3s ease; }
-.cart-count { position: absolute; top: -8px; right: -12px; background-color: #fdd100; color: black; border-radius: 50%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; font-size: 0.8rem; font-weight: bold; }
-.hamburger-menu { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+/* --- ESTILOS GENERALES Y HEADER --- */
+/* Aquí irían tus estilos del header y generales */
 
-/* --- SECCIÓN DE TIENDA DE IPHONES --- */
+/* ESTILOS DE LA TIENDA Y MODAL */
 .iphones-section { padding: 60px 20px; background-color: #080808; }
 .iphones-container { display: flex; max-width: 1400px; margin: 0 auto; gap: 40px; }
 .iphones-nav { flex: 0 0 280px; color: white; }
 .iphones-nav h2 { font-size: 2rem; margin-bottom: 30px; border-left: 4px solid #fdd100; padding-left: 15px; }
 .accordion-item { margin-bottom: 10px; border-bottom: 1px solid #222; }
-.accordion-header { background-color: #1a1a1a; padding: 15px 20px; cursor: pointer; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s; }
-.accordion-header:hover { background-color: #252525; }
-.accordion-header::after { content: '+'; font-size: 1.5rem; color: #fdd100; transition: transform 0.3s ease; }
+.accordion-header { background-color: #1a1a1a; padding: 15px 20px; cursor: pointer; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+.accordion-header::after { content: '×'; font-size: 1.5rem; color: #fdd100; transition: transform 0.3s ease; }
 .accordion-item.active .accordion-header::after { transform: rotate(45deg); }
 .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background-color: #0c0c0c; }
 .accordion-item.active .accordion-content { max-height: 200px; }
-.sub-model-link { display: block; padding: 12px 20px 12px 30px; color: #ccc; text-decoration: none; transition: background-color 0.3s, color 0.3s; }
-.sub-model-link:hover { background-color: #222; color: white; }
+.sub-model-link { display: block; padding: 12px 20px 12px 30px; color: #ccc; text-decoration: none; }
 .sub-model-link.active { background-color: #fdd100; color: #000; font-weight: bold; }
 .iphones-display { flex: 1; }
 .product-grid { display: none; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
 .product-grid.active { display: grid; }
+.product-card { background-color: #111; border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #222; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card img { max-width: 100%; height: 240px; object-fit: contain; margin-bottom: 20px; }
+.product-card h3 { color: white; font-size: 1.2rem; }
+.product-card .price { color: #fdd100; font-size: 1.3rem; font-weight: bold; }
+.buy-button { background-color: #fdd100; color: #000; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
-/* --- ESTILOS DE TARJETA DE PRODUCTO (MODIFICADO) --- */
-.product-card { background-color: #111; border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #222; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-.product-card img { max-width: 100%; /* La imagen puede ser más ancha */ height: 240px; /* AUMENTAMOS LA ALTURA DE LA IMAGEN */ object-fit: contain; margin-bottom: 20px; /* Más espacio debajo */ }
-.product-card h3 { color: white; font-size: 1.2rem; margin: 10px 0; }
-.product-card .price { color: #fdd100; font-size: 1.3rem; font-weight: bold; margin: 10px 0 20px; }
-.buy-button { background-color: #fdd100; color: #000; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; font-size: 1rem; }
-.buy-button:hover { background-color: #ffde4d; }
-
-/* --- ESTILOS DEL MODAL (NUEVO) --- */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+/* MODAL Y CARRUSEL */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
 .modal-overlay.active { opacity: 1; visibility: visible; }
-.modal-content { background: #1a1a1a; color: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 800px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
-.modal-overlay.active .modal-content { transform: scale(1); }
-.modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; line-height: 1; }
-.modal-body { display: flex; gap: 30px; }
-.modal-image { flex: 1; text-align: center; }
-.modal-image img { max-width: 100%; height: auto; max-height: 400px; object-fit: contain; }
+.modal-content { background: #1a1a1a; border-radius: 20px; color: white; padding: 30px 40px; width: 90%; max-width: 1200px; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; z-index: 10; }
+.modal-body { display: flex; gap: 40px; }
 .modal-details { flex: 1; }
-.modal-details #modal-title { font-size: 2rem; margin-top: 0; }
-.modal-details .modal-price { color: #fdd100; font-size: 1.8rem; font-weight: bold; margin: 10px 0 25px; }
-.product-specs h3 { border-bottom: 2px solid #fdd100; padding-bottom: 5px; margin-bottom: 15px; }
-.product-specs p { line-height: 1.8; color: #ccc; }
-.modal-buy-button { margin-top: 30px; width: 100%; padding: 15px; font-size: 1.2rem; }
 
-/* --- RESPONSIVE GENERAL --- */
-@media (max-width: 992px) {
-    .iphones-container { flex-direction: column; }
-    .iphones-nav { flex: 0 0 auto; width: 100%; }
+/* --- CORRECCIÓN AQUÍ --- */
+.modal-image-container {
+    flex: 1;
+    position: relative;
+    min-width: 0; /* Ayuda a flexbox a manejar el tamaño correctamente */
 }
+.carousel {
+    width: 100%;
+    height: 100%; /* El carrusel ocupa toda la altura de su contenedor padre */
+    position: relative;
+}
+/* ------------------------ */
+
+.carousel-track-container { height: 100%; overflow: hidden; border-radius: 10px; }
+.carousel-track { list-style: none; position: relative; height: 100%; margin: 0; padding: 0; transition: transform 250ms ease-in; }
+.carousel-slide { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%; }
+.carousel-slide img { width: 100%; height: 100%; object-fit: contain; }
+.carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 1; }
+.carousel-button--left { left: 10px; }
+.carousel-button--right { right: 10px; }
+.carousel-nav { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; }
+.carousel-indicator { background: rgba(255, 255, 255, 0.3); border: 0; border-radius: 50%; cursor: pointer; height: 12px; width: 12px; margin: 0 8px; }
+.carousel-indicator.current-slide { background: #fdd100; }
+.modal-price { color: #fdd100; font-size: 1.8rem; font-weight: bold; }
+/* --- ESTILO PARA EL TÍTULO DE ESPECIFICACIONES (NUEVO) --- */
+/* Pega este código en tu archivo styles.css, dentro de los estilos del modal */
+
+.product-specs h3 {
+    font-size: 1.3rem; /* Un poco más grande para que destaque */
+    font-weight: bold;
+    text-align: left; /* Aseguramos que esté alineado a la izquierda */
+    
+    /* --- LA LÍNEA AMARILLA --- */
+    border-bottom: 2px solid #fdd100; /* 2px de grosor, color amarillo */
+    
+    /* --- ESPACIADO PARA QUE RESPIRE --- */
+    padding-bottom: 10px; /* Espacio entre el texto y la línea */
+    margin-bottom: 15px; /* Espacio después de la línea y antes de las specs */
+}
+.product-specs .spec-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #333; }
+.product-specs .spec-label { font-weight: bold; color: white; }
+.select-container { position: relative; }
+.select-container::after { content: '▼'; font-size: 0.7rem; color: #fdd100; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+#modal-battery-select { -webkit-appearance: none; appearance: none; background-color: #2a2a2a; border: 1px solid #444; color: white; padding: 10px 40px 10px 15px; border-radius: 8px; cursor: pointer; min-width: 180px; }
+
+/* Responsive */
 @media (max-width: 768px) {
-    .main-nav { padding: 10px 20px; }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #000; padding: 0; z-index: 1000; }
-    .nav-links.active { display: flex; }
-    .nav-links li { width: 100%; text-align: center; }
-    .nav-links a { padding: 15px 0; display: block; border-bottom: 1px solid #222; }
-    .nav-links a.active::after { display: none; }
-    .hamburger-menu { display: block; order: -1; }
-    .nav-icons { gap: 20px; }
-    /* Modal responsive */
     .modal-body { flex-direction: column; }
-    .modal-content { padding: 20px; }
-    .modal-details #modal-title { font-size: 1.5rem; }
-    .modal-details .modal-price { font-size: 1.5rem; }
+    .modal-image-container { height: 300px; } /* Ajustamos la altura para móvil */
 }
 
+
+
+/* --- ESTILO DE SCROLLBAR: MODERNO Y SUTIL --- */
+
+/* --- Para WebKit (Chrome, Safari, etc.) --- */
+.modal-content::-webkit-scrollbar {
+    width: 8px; /* Una barra delgada */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent; /* El fondo es completamente invisible */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25); /* Por defecto es un gris muy sutil y semitransparente */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #ffffff; /* Al pasar el ratón, se vuelve de color amarillo sólido */
+}
+
+
+/* --- Para Firefox --- */
+.modal-content {
+  scrollbar-width: thin;
+  /* El thumb es amarillo, el track es transparente. Firefox no soporta el efecto hover en el scrollbar. */
+  scrollbar-color: #ffffff transparent;
+}
+
+
+/* --- ESTILOS PARA DROPDOWN PERSONALIZADO Y SPECS DINÁMICAS --- */
+/* Pega este código al final de tu styles.css */
+
+.product-specs p {
+    /* Si tenías esta regla, es mejor quitarla o ajustarla, 
+       ya que ahora usamos divs para las especificaciones */
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.product-specs .spec-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 1rem;
+    color: #ccc;
+    border-bottom: 1px solid #333;
+}
+
+.product-specs .spec-label {
+    font-weight: bold;
+    color: white; /* Hacemos la etiqueta más prominente */
+}
+
+/* Contenedor para ocultar el select por defecto y añadir nuestra flecha */
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* La flecha personalizada */
+.select-container::after {
+    content: '▼';
+    font-size: 0.7rem;
+    color: #fdd100;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Permite hacer clic a través de la flecha */
+}
+
+/* Estilos del <select> */
+#modal-battery-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px 40px 10px 15px; /* Espacio para la flecha a la derecha */
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 180px; /* Ancho mínimo para que se vea bien */
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+#modal-battery-select:focus {
+    outline: none;
+    border-color: #fdd100;
+}
+
+/* --- Animación de Zoom Constante para el Logo --- */
+
+/* 1. Definimos los pasos de la animación "pulsar" */
+@keyframes pulsar {
+  0% {
+    transform: scale(1); /* Tamaño inicial (normal) */
+  }
+  50% {
+    transform: scale(1.2); /* Tamaño máximo (un 10% más grande) */
+  }
+  100% {
+    transform: scale(1); /* Vuelve al tamaño normal */
+  }
+}
+
+/* 2. Aplicamos la animación a la clase de nuestro logo */
+.logo-animado {
+  animation: pulsar 3s ease-in-out infinite;
+}

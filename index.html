@@ -13,10 +13,16 @@
     <header class="main-header">
         <!-- Parte superior del header con el logo -->
         <div class="header-top">
-            <a href="#" class="logo-container">
-                <img src="./Diseño sin título (26).png" alt="Logo iPhone Twins">
+            <a href="./index.html" class="logo-container">
+                <img src="./Diseño sin título (26).png" alt="Logo iPhone Twins" class="logo-animado">
             </a>
         </div>
+
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú de navegación">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
         <!-- Barra de navegación principal -->
         <nav class="main-nav">
@@ -24,9 +30,9 @@
             
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#">Inicio</a></li>
+                <li><a href="./index.html">Inicio</a></li>
                 <li><a href="./iphone.html">iPhones</a></li>
-                <li><a href="#">Accesorios</a></li>
+                <li><a href="./accesrios.html">Accesorios</a></li>
                 <li><a href="#">Ofertas</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
@@ -40,14 +46,20 @@
     </main>
 
     <!-- SCRIPT PARA EL MENÚ HAMBURGUESA -->
-    <script>
-        const hamburgerButton = document.getElementById('hamburger-button');
-        const navLinks = document.getElementById('nav-links');
+    <!-- Pon esto justo antes de </body> en tu archivo HTML -->
+<script>
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navLinks = document.getElementById('nav-links');
+    // Esto es necesario para posicionar bien el menú desplegable
+    const mainHeader = document.querySelector('.main-header'); 
 
-        hamburgerButton.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); // Añade o quita la clase 'active'
-        });
-    </script>
+    // Hacemos que el header tenga posición relativa para que el menú absoluto se base en él
+    mainHeader.style.position = 'relative';
+
+    hamburgerBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
