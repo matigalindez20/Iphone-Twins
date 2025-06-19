@@ -3,32 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Twins - Header Responsive</title>
+    <title>iPhone Twins - Inicio</title>
     <link rel="stylesheet" href="./style.css">
-    <!-- Enlace a Font Awesome para los íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
     <header class="main-header">
-        <!-- Parte superior del header con el logo -->
         <div class="header-top">
             <a href="./index.html" class="logo-container">
+                <!-- Asegúrate de que la ruta a tu logo sea correcta -->
                 <img src="./Diseño sin título (26).png" alt="Logo iPhone Twins" class="logo-animado">
             </a>
         </div>
-
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú de navegación">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
-        <!-- Barra de navegación principal -->
         <nav class="main-nav">
-            <!-- BOTÓN DE HAMBURGUESA (solo visible en móvil) -->
-            
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="./index.html">Inicio</a></li>
                 <li><a href="./iphone.html">iPhones</a></li>
@@ -36,30 +29,60 @@
                 <li><a href="#">Ofertas</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
-
         </nav>
     </header>
 
-    <!-- Contenido de ejemplo -->
-    <main style="height: 100vh; color: white; text-align: center; padding-top: 50px;">
-        <h1>Contenido de la Página</h1>
+    <main>
+        <!-- ======== NUEVO BANNER HERO ======== -->
+        <section class="hero-banner">
+            <!-- La primera diapositiva empieza visible -->
+            <div class="hero-slide active" id="slide1"></div>
+            <!-- La segunda diapositiva está oculta, esperando su turno -->
+            <div class="hero-slide" id="slide2"></div>
+            
+            <!-- (Opcional) Puedes añadir un título o un botón aquí encima del banner -->
+            <div class="hero-content">
+                 <!-- <h1>Tu Tienda de Confianza</h1>
+                 <a href="./iphone.html" class="hero-button">Ver iPhones</a> -->
+            </div>
+        </section>
+        <!-- ======== FIN DEL BANNER ======== -->
+
+        <!-- Aquí puedes añadir más contenido a tu página de inicio -->
+        
     </main>
 
     <!-- SCRIPT PARA EL MENÚ HAMBURGUESA -->
-    <!-- Pon esto justo antes de </body> en tu archivo HTML -->
-<script>
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const navLinks = document.getElementById('nav-links');
-    // Esto es necesario para posicionar bien el menú desplegable
-    const mainHeader = document.querySelector('.main-header'); 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const navLinks = document.getElementById('nav-links');
+            hamburgerBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
 
-    // Hacemos que el header tenga posición relativa para que el menú absoluto se base en él
-    mainHeader.style.position = 'relative';
+    <!-- SCRIPT PARA EL BANNER AUTOMÁTICO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
 
-    hamburgerBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-</script>
+            let currentSlideIndex = 0;
+            
+            setInterval(() => {
+                // Oculta la diapositiva actual
+                slides[currentSlideIndex].classList.remove('active');
+                
+                // Calcula el índice de la siguiente diapositiva
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                
+                // Muestra la siguiente diapositiva
+                slides[currentSlideIndex].classList.add('active');
+            }, 5000); // Cambia cada 5000 milisegundos = 5 segundos
+        });
+    </script>
 
 </body>
 </html>
