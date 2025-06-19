@@ -489,25 +489,20 @@ body {
 
 
 /* ======================================================= */
-/* --- ESTILOS DEL BANNER HERO (PÁGINA DE INICIO) --- */
+/* --- ESTILOS DEL BANNER HERO (PÁGINA DE INICIO) - CORREGIDO --- */
 /* ======================================================= */
 
 .hero-banner {
     position: relative;
     width: 100%;
-    
-    /* --- AJUSTE CLAVE PARA EL TAMAÑO MINIMALISTA --- */
-    height: 70vh; /* Ocupa el 75% de la altura de la pantalla */
-    max-height: 700px; /* TOPE MÁXIMO: evita que sea gigantesco en monitores altos */
-    
+    height: 75vh;
+    max-height: 700px;
     overflow: hidden;
     background-color: #0d0d0d;
-    
-    /* --- CENTRADO Y BORDES SUTILES (NUEVO) --- */
-    margin: 40px auto; /* Centra el banner y le da espacio arriba/abajo */
-    max-width: 85%; /* Le da un pequeño margen a los lados en pantallas anchas */
-    border-radius: 20px; /* Bordes redondeados para un look más suave */
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* Sombra más pronunciada */
+    margin: 40px auto;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
 .hero-slide {
@@ -516,24 +511,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    
-    background-size: cover;
-    background-position: center center;
-    
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    
-    /* La viñeta oscura se mantiene para mejorar la legibilidad del texto si lo añades */
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
 }
 
-/* Define las imágenes para cada slide (AQUÍ PONES TUS IMÁGENES) */
-#slide1 {
-    background-image: url('./banner2.jpg'); 
-}
-
-#slide2 {
-    background-image: url('./banner1.jpg');
+/* LA MAGIA PARA LAS IMÁGENES DENTRO DEL SLIDE */
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    /* Esta propiedad es como 'background-size: cover' pero para etiquetas <img> */
+    /* Asegura que la imagen cubra todo el espacio sin deformarse. */
+    object-fit: cover; 
+    /* Esta propiedad nos permite elegir qué parte de la imagen es más importante. */
+    /* 'center' es el valor por defecto, pero puedes probar 'top', 'bottom', etc. */
+    object-position: center center; 
 }
 
 /* La clase 'active' hace visible la diapositiva */
@@ -558,9 +549,18 @@ body {
 /* --- AJUSTES RESPONSIVE PARA EL BANNER --- */
 @media (max-width: 768px) {
     .hero-banner {
-        height: 50vh; /* En móvil, un 50% de la altura es un buen balance */
-        max-width: 100%; /* Ocupa todo el ancho en móvil */
-        margin: 20px 0; /* Menos espacio vertical en móvil */
-        border-radius: 0; /* Sin bordes redondeados para un look de borde a borde */
+        height: 50vh;
+        max-width: 100%;
+        margin: 20px 0;
+        border-radius: 0;
+    }
+    
+    /* ¡AQUÍ ESTÁ LA CORRECCIÓN PARA MÓVIL! */
+    .hero-slide img {
+        /* Para la vista de celular, le decimos que priorice la parte derecha de la imagen,
+           que es donde están los iPhones. Puedes jugar con el porcentaje.
+           '100% 50%' significa: 100% desde la izquierda (o sea, el borde derecho),
+           y 50% desde arriba (o sea, el centro vertical). */
+        object-position: 80% 50%;
     }
 }
